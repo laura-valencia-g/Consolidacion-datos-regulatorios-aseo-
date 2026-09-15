@@ -1,0 +1,47 @@
+# Consolidación e Integración de Datos Regulatorios — Sector Aseo (Colombia)
+
+Proceso de extracción, limpieza e integración de múltiples fuentes de datos regulatorios del sector de aseo (recolección de residuos) en Colombia, para construir un dataset consolidado y analizable.
+
+*Trabajo académico grupal — Universidad EAFIT, 2024 (Curso: Introducción a BI). Coautoría: Laura Valencia Giraldo y Mariana Serna.*
+
+## Problema
+
+La información regulatoria del sector de aseo en Colombia se encuentra dispersa en múltiples fuentes independientes: tarifas, costos de recolección y transporte, factores de subsidio, fondos de solidaridad, tarifas contractuales y variables calculadas — cada una en un archivo distinto, con nombres de columnas inconsistentes entre sí. Esto imposibilita un análisis conjunto sin un proceso previo de integración.
+
+## Fuentes de datos integradas
+
+- Consolidado de Tarifas
+- Costos de Recolección y Transporte
+- Factores de Subsidio
+- Fondo de Solidaridad
+- Tarifa Compuesta
+- Tarifas Contractuales
+- Variables Calculadas
+- Subsidios Solidarios
+
+## Metodología
+
+1. **Estandarización de columnas**: se unificaron nombres de columnas inconsistentes entre las 8 fuentes (por ejemplo, "Id" vs "ID Empresa", "Código DANE" con distintas variantes de tildes y mayúsculas).
+2. **Consolidación por bloques**: las fuentes se agruparon en dos conjuntos según su estructura común y se concatenaron (`pd.concat`) para unificar registros.
+3. **Limpieza de duplicados y nulos**: eliminación de registros duplicados y columnas irrelevantes o con alta proporción de datos faltantes.
+4. **Integración final por clave común**: unión (`join`) de ambos conjuntos consolidados usando el ID de empresa como llave, eliminando columnas redundantes generadas por el cruce.
+5. **Exportación** del dataset final limpio y consolidado, listo para análisis posterior o carga en una herramienta de BI.
+
+## Valor de negocio
+
+Este tipo de proceso de integración es el paso previo indispensable para cualquier análisis regulatorio o de prospectiva del sector: sin un dataset consolidado y limpio, no es posible comparar tarifas, subsidios y costos entre empresas y municipios de forma confiable. El resultado es un insumo directo para dashboards de seguimiento regulatorio o modelos de proyección tarifaria.
+
+## Stack técnico
+
+`Python` · `Pandas` · `NumPy` · Limpieza y estandarización de datos · Integración de múltiples fuentes (ETL)
+
+## Contenido del repositorio
+
+| Archivo | Descripción |
+|---|---|
+| `Consolidado_ASEO.ipynb` | Notebook completo del proceso de limpieza, estandarización e integración de las 8 fuentes de datos |
+
+## Habilidades aplicadas
+
+Integración de datos (ETL) · Limpieza y estandarización de datos · Manejo de múltiples fuentes heterogéneas · Preparación de datos para análisis y BI · Trabajo colaborativo en equipo
+
